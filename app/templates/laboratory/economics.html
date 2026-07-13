@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Laboratory Economics — Refresh Labs{% endblock %}
+
+{% block content %}
+<section class="max-w-4xl mx-auto px-4 sm:px-6 py-16">
+  <a href="{{ url_for('laboratory.index') }}" class="text-sm text-brand-600 font-semibold hover:text-brand-700">← Living Laboratory</a>
+
+  <p class="mt-6 font-mono text-[11px] tracking-[0.15em] font-medium text-brand-700 mb-3 flex items-center gap-2"><span class="inline-block w-4 h-px bg-brand-600"></span>TRANSPARENCY</p>
+  <h1 class="text-3xl font-extrabold text-slate-900">Laboratory Economics</h1>
+
+  <p class="mt-6 text-slate-600 leading-relaxed">
+    The Living Laboratory exists to demonstrate Bitcoin mining technology.
+    Like real-world mining operations, results vary based on network
+    difficulty, market conditions, and operational costs. Financial output is
+    documented transparently because understanding mining economics is part
+    of the educational mission.
+  </p>
+  <p class="mt-4 text-sm text-slate-400">
+    These figures describe an educational demonstration, not an investment
+    program. Refresh Labs does not offer investment returns of any kind.
+  </p>
+
+  <div class="mt-10 grid gap-4 sm:grid-cols-2">
+    <div class="rounded-xl border border-slate-200 p-5">
+      <p class="text-xs uppercase tracking-wide text-slate-400">Period</p>
+      <p class="mt-2 font-mono text-lg font-semibold text-slate-900">{{ snapshot.period }}</p>
+    </div>
+    <div class="rounded-xl border border-slate-200 p-5">
+      <p class="text-xs uppercase tracking-wide text-slate-400">Hashpower Purchased</p>
+      <p class="mt-2 font-mono text-lg font-semibold text-slate-900">{{ snapshot.hashpower_purchased }}</p>
+    </div>
+    <div class="rounded-xl border border-slate-200 p-5">
+      <p class="text-xs uppercase tracking-wide text-slate-400">Mining Expenses</p>
+      <p class="mt-2 font-mono text-lg font-semibold text-slate-900">{{ snapshot.mining_expenses }}</p>
+    </div>
+    <div class="rounded-xl border border-slate-200 p-5">
+      <p class="text-xs uppercase tracking-wide text-slate-400">Bitcoin Produced</p>
+      <p class="mt-2 font-mono text-lg font-semibold text-slate-900">{{ snapshot.bitcoin_produced }}</p>
+    </div>
+    <div class="rounded-xl border border-slate-200 p-5 sm:col-span-2">
+      <p class="text-xs uppercase tracking-wide text-slate-400">Educational Outputs</p>
+      <p class="mt-2 font-mono text-lg font-semibold text-slate-900">{{ snapshot.educational_outputs }}</p>
+    </div>
+  </div>
+</section>
+{% endblock %}

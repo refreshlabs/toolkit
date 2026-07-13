@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}GitHub — Refresh Labs{% endblock %}
+
+{% block content %}
+<section class="max-w-3xl mx-auto px-4 sm:px-6 py-16">
+  <p class="font-mono text-[11px] tracking-[0.15em] font-medium text-brand-700 mb-3 flex items-center gap-2"><span class="inline-block w-4 h-px bg-brand-600"></span>OPEN SOURCE</p>
+  <h1 class="text-3xl font-extrabold text-slate-900">Built in the Open</h1>
+
+  <p class="mt-6 text-lg text-slate-600 leading-relaxed">
+    Refresh Labs develops its educational tools publicly whenever practical.
+    Open development allows others to learn from, reproduce, and improve the
+    project.
+  </p>
+
+  <a href="#" class="inline-block mt-8 bg-slate-900 hover:bg-slate-800 text-white font-semibold px-6 py-3 rounded-md">
+    View Repository on GitHub
+  </a>
+  <p class="mt-2 text-xs text-slate-400">Repository link is a placeholder until the public repo is finalized.</p>
+
+  <h2 class="mt-14 text-xl font-bold text-slate-900">Development Status</h2>
+  <div class="mt-6 divide-y divide-slate-200 rounded-2xl border border-slate-200 overflow-hidden">
+    {% for name, status in dev_status %}
+      <div class="flex items-center justify-between px-6 py-4">
+        <span class="text-sm font-medium text-slate-700">{{ name }}</span>
+        <span class="text-xs font-semibold px-3 py-1 rounded-full
+          {% if status == 'Published' %} bg-emerald-100 text-emerald-700
+          {% elif status == 'In Development' or status == 'In Progress' %} bg-amber-100 text-amber-700
+          {% else %} bg-slate-100 text-slate-600 {% endif %}">
+          {{ status }}
+        </span>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

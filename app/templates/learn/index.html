@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Learn — Refresh Labs{% endblock %}
+
+{% block content %}
+<section class="max-w-4xl mx-auto px-4 sm:px-6 py-16">
+  <p class="font-mono text-[11px] tracking-[0.15em] font-medium text-brand-700 mb-3 flex items-center gap-2"><span class="inline-block w-4 h-px bg-brand-600"></span>LEARN</p>
+  <h1 class="text-3xl font-extrabold text-slate-900">Educational Resources</h1>
+  <p class="mt-4 text-slate-600 max-w-2xl">Free videos and tutorials on Bitcoin, mining, open-source software, and related technologies.</p>
+
+  <div class="mt-10 grid gap-6 sm:grid-cols-2">
+    <a href="{{ url_for('learn.videos') }}" class="block rounded-2xl border border-slate-200 p-8 hover:border-brand-400 transition">
+      <h2 class="text-xl font-bold text-slate-900">Videos</h2>
+      <p class="mt-2 text-sm text-slate-500">Watch demonstrations and explainers, searchable by category.</p>
+    </a>
+    <a href="{{ url_for('learn.tutorials') }}" class="block rounded-2xl border border-slate-200 p-8 hover:border-brand-400 transition">
+      <h2 class="text-xl font-bold text-slate-900">Tutorials</h2>
+      <p class="mt-2 text-sm text-slate-500">Read step-by-step written guides, published as open-source Markdown.</p>
+    </a>
+  </div>
+</section>
+{% endblock %}

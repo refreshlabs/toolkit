@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}{{ tutorial.title }} — Refresh Labs{% endblock %}
+
+{% block content %}
+<article class="max-w-3xl mx-auto px-4 sm:px-6 py-16">
+  <a href="{{ url_for('learn.tutorials') }}" class="text-sm text-brand-600 font-semibold hover:text-brand-700">← All tutorials</a>
+
+  <span class="block mt-6 text-xs font-semibold text-brand-600 uppercase tracking-wide">{{ tutorial.category }}</span>
+  <h1 class="mt-2 text-3xl font-extrabold text-slate-900">{{ tutorial.title }}</h1>
+  <p class="mt-2 text-sm text-slate-400">{{ tutorial.date_published.strftime('%B %-d, %Y') if tutorial.date_published else '' }}</p>
+
+  <div class="prose prose-slate mt-8 max-w-none prose-headings:font-bold prose-a:text-brand-600">
+    {{ tutorial.html | safe }}
+  </div>
+</article>
+{% endblock %}

@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% block title %}Refresh Labs — Education, Open Systems, Transparency{% endblock %}
+
+{% block content %}
+
+<section class="relative overflow-hidden bg-gradient-to-b from-brand-50 to-slate-50">
+  <svg class="absolute inset-0 w-full h-full text-brand-600 opacity-[0.16]" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+    <g fill="none" stroke="currentColor" stroke-width="1">
+      <line x1="8%" y1="20%" x2="24%" y2="38%"/>
+      <line x1="24%" y1="38%" x2="18%" y2="62%"/>
+      <line x1="24%" y1="38%" x2="42%" y2="30%"/>
+      <line x1="42%" y1="30%" x2="58%" y2="46%"/>
+      <line x1="58%" y1="46%" x2="76%" y2="28%"/>
+      <line x1="58%" y1="46%" x2="66%" y2="70%"/>
+      <line x1="76%" y1="28%" x2="92%" y2="40%"/>
+      <line x1="66%" y1="70%" x2="84%" y2="78%"/>
+      <line x1="18%" y1="62%" x2="34%" y2="82%"/>
+    </g>
+    <g fill="currentColor">
+      <circle cx="8%" cy="20%" r="3"/>
+      <circle cx="24%" cy="38%" r="4"/>
+      <circle cx="18%" cy="62%" r="3"/>
+      <circle cx="42%" cy="30%" r="3"/>
+      <circle cx="58%" cy="46%" r="4.5"/>
+      <circle cx="76%" cy="28%" r="3"/>
+      <circle cx="92%" cy="40%" r="3"/>
+      <circle cx="66%" cy="70%" r="3.5"/>
+      <circle cx="84%" cy="78%" r="3"/>
+      <circle cx="34%" cy="82%" r="3"/>
+    </g>
+  </svg>
+
+  <div class="relative max-w-4xl mx-auto px-4 sm:px-6 pt-20 pb-14 sm:pt-24 sm:pb-16 text-center">
+    <p class="font-mono text-[11px] tracking-[0.15em] font-medium text-brand-700 mb-4 flex items-center justify-center gap-2">
+      <span class="inline-block w-4 h-px bg-brand-600"></span>501(C)(3) EDUCATIONAL NONPROFIT<span class="inline-block w-4 h-px bg-brand-600"></span>
+    </p>
+    <h1 class="text-4xl sm:text-6xl font-bold tracking-tight text-slate-900">Refresh Labs</h1>
+    <p class="mt-5 text-xl text-slate-600">Exploring open systems through education, experimentation, and community.</p>
+    <p class="mt-4 text-base text-slate-500 max-w-2xl mx-auto">
+      We create educational resources and public demonstrations that help people
+      understand Bitcoin, open-source software, communications technology, and
+      decentralized systems.
+    </p>
+    <div class="mt-9 flex flex-wrap justify-center gap-3">
+      <a href="{{ url_for('learn.index') }}" class="bg-brand-600 hover:bg-brand-700 text-white font-semibold px-6 py-3 rounded-md">Explore Learning Resources</a>
+      <a href="{{ url_for('laboratory.index') }}" class="bg-white border border-slate-300 hover:border-brand-400 text-slate-800 font-semibold px-6 py-3 rounded-md">View Living Laboratory</a>
+      <a href="{{ url_for('main.github') }}" class="bg-white border border-slate-300 hover:border-brand-400 text-slate-800 font-semibold px-6 py-3 rounded-md">View Source Code</a>
+    </div>
+  </div>
+
+  <div class="relative max-w-6xl mx-auto px-4 sm:px-6" aria-hidden="true">
+    <div class="flex items-center gap-3 text-slate-300">
+      <span class="flex-1 h-px bg-slate-200"></span>
+      <svg width="120" height="10" viewBox="0 0 120 10" class="text-brand-400 shrink-0">
+        <polyline points="0,5 20,5 26,1 32,9 38,1 44,9 50,5 120,5" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      </svg>
+      <span class="flex-1 h-px bg-slate-200"></span>
+    </div>
+  </div>
+</section>
+
+<section class="max-w-6xl mx-auto px-4 sm:px-6 pt-14 pb-16">
+  <p class="font-mono text-[11px] tracking-[0.15em] font-medium text-brand-700 mb-3 flex items-center gap-2"><span class="inline-block w-4 h-px bg-brand-600"></span>MISSION AREAS</p>
+  <h2 class="text-2xl font-bold text-slate-900">Three ways we teach open systems</h2>
+
+  <div class="mt-8 grid gap-5 sm:grid-cols-3">
+    <div class="group rounded-lg border border-slate-200 border-t-2 border-t-brand-500 bg-white p-6 hover:shadow-md hover:-translate-y-0.5 transition">
+      <div class="flex items-center justify-between">
+        <div class="h-11 w-11 rounded-md bg-brand-50 text-brand-700 flex items-center justify-center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+            <circle cx="12" cy="5" r="2.2"/><circle cx="5" cy="17" r="2.2"/><circle cx="19" cy="17" r="2.2"/>
+            <path d="M10.4 6.6L6.6 15.2M13.6 6.6l3.8 8.6M7.3 17h9.4"/>
+          </svg>
+        </div>
+        <span class="font-mono text-xs text-slate-300">01</span>
+      </div>
+      <h3 class="mt-4 font-semibold text-slate-900">Bitcoin &amp; Decentralized Systems</h3>
+      <p class="mt-2 text-sm text-slate-500">Teaching Bitcoin mining, proof-of-work, network architecture, and decentralized technology.</p>
+    </div>
+
+    <div class="group rounded-lg border border-slate-200 border-t-2 border-t-brand-500 bg-white p-6 hover:shadow-md hover:-translate-y-0.5 transition">
+      <div class="flex items-center justify-between">
+        <div class="h-11 w-11 rounded-md bg-brand-50 text-brand-700 flex items-center justify-center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 6L3 12l6 6M15 6l6 6-6 6"/>
+          </svg>
+        </div>
+        <span class="font-mono text-xs text-slate-300">02</span>
+      </div>
+      <h3 class="mt-4 font-semibold text-slate-900">Open Source Technology</h3>
+      <p class="mt-2 text-sm text-slate-500">Exploring FOSS, Linux, programming, and collaborative software development.</p>
+    </div>
+
+    <div class="group rounded-lg border border-slate-200 border-t-2 border-t-brand-500 bg-white p-6 hover:shadow-md hover:-translate-y-0.5 transition">
+      <div class="flex items-center justify-between">
+        <div class="h-11 w-11 rounded-md bg-brand-50 text-brand-700 flex items-center justify-center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="8" r="3"/><path d="M3.5 19c.7-3 3-5 5.5-5s4.8 2 5.5 5"/>
+            <circle cx="17.5" cy="9" r="2.3"/><path d="M15.7 13.2c1.9.2 3.6 1.7 4.1 4"/>
+          </svg>
+        </div>
+        <span class="font-mono text-xs text-slate-300">03</span>
+      </div>
+      <h3 class="mt-4 font-semibold text-slate-900">Community Education</h3>
+      <p class="mt-2 text-sm text-slate-500">Hosting free educational, cultural, and family-friendly events.</p>
+    </div>
+  </div>
+</section>
+
+<section class="relative bg-slate-900 text-white overflow-hidden">
+  <svg class="absolute inset-0 w-full h-full opacity-[0.1]" aria-hidden="true">
+    <pattern id="dotgrid-home" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="currentColor" class="text-brand-300"/>
+    </pattern>
+    <rect width="100%" height="100%" fill="url(#dotgrid-home)"/>
+  </svg>
+  <div class="relative max-w-6xl mx-auto px-4 sm:px-6 py-16">
+    <p class="font-mono text-[11px] tracking-[0.15em] font-medium text-brand-300 mb-3 flex items-center gap-2"><span class="inline-block w-4 h-px bg-brand-300"></span>CURRENT PROJECT</p>
+    <h2 class="text-2xl font-bold">Living Laboratory</h2>
+    <p class="mt-4 text-slate-300 max-w-2xl">
+      Refresh Labs operates a transparent Bitcoin mining laboratory as an
+      educational demonstration. The project documents real-world mining
+      operations, costs, performance, and lessons learned.
+    </p>
+
+    <div class="mt-10 grid gap-4 sm:grid-cols-3">
+      <div class="rounded-lg border border-slate-700 border-t-2 border-t-brand-400 bg-slate-800 p-5">
+        <p class="text-[11px] font-mono uppercase tracking-wide text-slate-400">Hashrate</p>
+        <p class="mt-2 font-mono text-xl font-semibold text-brand-300">Coming Soon</p>
+      </div>
+      <div class="rounded-lg border border-slate-700 border-t-2 border-t-brand-400 bg-slate-800 p-5">
+        <p class="text-[11px] font-mono uppercase tracking-wide text-slate-400">Bitcoin Produced</p>
+        <p class="mt-2 font-mono text-xl font-semibold text-brand-300">Coming Soon</p>
+      </div>
+      <div class="rounded-lg border border-slate-700 border-t-2 border-t-brand-400 bg-slate-800 p-5">
+        <p class="text-[11px] font-mono uppercase tracking-wide text-slate-400">Educational Materials</p>
+        <p class="mt-2 font-mono text-xl font-semibold text-brand-300">Coming Soon</p>
+      </div>
+    </div>
+
+    <a href="{{ url_for('laboratory.index') }}" class="inline-block mt-8 text-brand-300 font-semibold hover:text-brand-200">View the full dashboard →</a>
+  </div>
+</section>
+
+{% endblock %}

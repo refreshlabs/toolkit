@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Living Laboratory — Refresh Labs{% endblock %}
+
+{% block content %}
+<section class="relative bg-slate-900 text-white overflow-hidden">
+  <svg class="absolute inset-0 w-full h-full opacity-[0.12]" aria-hidden="true">
+    <pattern id="dotgrid-lab" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="currentColor" class="text-brand-300"/>
+    </pattern>
+    <rect width="100%" height="100%" fill="url(#dotgrid-lab)"/>
+  </svg>
+  <div class="relative max-w-6xl mx-auto px-4 sm:px-6 py-16">
+    <p class="font-mono text-[11px] tracking-[0.15em] font-medium text-brand-300 mb-3 flex items-center gap-2"><span class="inline-block w-4 h-px bg-brand-300"></span>LIVING LABORATORY</p>
+    <h1 class="text-3xl sm:text-4xl font-bold tracking-tight">A Transparent Educational Dashboard</h1>
+    <p class="mt-5 text-slate-300 max-w-2xl">
+      Refresh Labs operates a transparent Bitcoin mining laboratory as an
+      educational demonstration. The project documents real-world mining
+      operations, costs, performance, and lessons learned. Mining here is a
+      teaching tool, not a profit center.
+    </p>
+    <a href="{{ url_for('laboratory.economics') }}" class="inline-block mt-6 text-brand-300 font-semibold hover:text-brand-200">See Laboratory Economics →</a>
+  </div>
+</section>
+
+<section class="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+  <h2 class="text-xl font-bold text-slate-900 mb-2">Dashboard Metrics</h2>
+  <p class="text-sm text-slate-500 mb-8 max-w-2xl">
+    Values below are placeholders until the lab is operational. This dashboard
+    is designed so it can later be connected to mining pool APIs, a Bitcoin
+    node, and on-site monitoring hardware.
+  </p>
+
+  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    {% set metrics = [
+      ("Current Hashrate", status.hashrate if status else "Coming Soon"),
+      ("Mining Provider", status.mining_provider if status else "Coming Soon"),
+      ("Mining Period", status.mining_period if status else "Coming Soon"),
+      ("Bitcoin Produced", status.btc_produced if status else "Coming Soon"),
+      ("Mining Costs", status.mining_costs if status else "Coming Soon"),
+      ("Estimated Bitcoin Value", status.estimated_btc_value if status else "Coming Soon"),
+      ("Educational Content Produced", status.educational_content_produced if status else "Coming Soon"),
+      ("Status", status.status if status else "Planning"),
+    ] %}
+    {% for label, value in metrics %}
+      <div class="rounded-lg border border-slate-200 border-t-2 border-t-brand-500 p-5 bg-white hover:shadow-md transition-shadow">
+        <p class="text-[11px] font-mono uppercase tracking-wide text-slate-400">{{ label }}</p>
+        <p class="mt-2 font-mono text-lg font-semibold text-slate-900">{{ value }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
