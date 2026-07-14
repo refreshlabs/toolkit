@@ -6,6 +6,8 @@ from functools import wraps
 
 from flask import Blueprint, current_app, jsonify, redirect, render_template, request, session, url_for
 
+from app.extensions import db
+from app.models.transparency import ExpenseSubfield, TransparencyReport
 from app.services.content import set_content
 from app.services import tutorials as tutorials_service
 
@@ -74,14 +76,20 @@ def logout():
     return redirect(url_for("main.home"))
 
 
-@admin_bp.route("/api/content", methods=["PATCH"])
-def update_content():
+def _check_api_auth():
     if not session.get("is_admin"):
         return jsonify({"error": "unauthorized"}), 403
-
     token = request.headers.get("X-CSRF-Token", "")
     if not hmac.compare_digest(token, session.get("csrf_token", "")):
         return jsonify({"error": "invalid csrf token"}), 403
+    return None
+
+
+@admin_bp.route("/api/content", methods=["PATCH"])
+def update_content():
+    auth_error = _check_api_auth()
+    if auth_error:
+        return auth_error
 
     data = request.get_json(silent=True) or {}
     key = data.get("key")
@@ -92,6 +100,67 @@ def update_content():
         return jsonify({"error": "payload too large"}), 400
 
     set_content(key, value)
+    return jsonify({"ok": True})
+
+
+@admin_bp.route("/api/expense-subfields", methods=["POST"])
+def create_expense_subfield():
+    auth_error = _check_api_auth()
+    if auth_error:
+        return auth_error
+
+    data = request.get_json(silent=True) or {}
+    report_id = data.get("report_id")
+    label = data.get("label")
+    description = data.get("description") or None
+    try:
+        amount = float(data.get("amount", 0))
+    except (TypeError, ValueError):
+        return jsonify({"error": "invalid amount"}), 400
+
+    if not isinstance(label, str) or not label.strip():
+        return jsonify({"error": "label is required"}), 400
+    if len(label) > 200:
+        return jsonify({"error": "label too long"}), 400
+    if description is not None and len(description) > 1000:
+        return jsonify({"error": "description too long"}), 400
+    if amount < 0:
+        return jsonify({"error": "amount must be non-negative"}), 400
+
+    report = db.session.get(TransparencyReport, report_id)
+    if report is None:
+        return jsonify({"error": "report not found"}), 404
+
+    next_order = len(report.expense_subfields)
+    subfield = ExpenseSubfield(
+        report_id=report.id,
+        label=label.strip(),
+        amount_cents=round(amount * 100),
+        description=description,
+        sort_order=next_order,
+    )
+    db.session.add(subfield)
+    db.session.commit()
+    return jsonify({
+        "id": subfield.id,
+        "label": subfield.label,
+        "amount": subfield.amount,
+        "description": subfield.description,
+    })
+
+
+@admin_bp.route("/api/expense-subfields/<int:subfield_id>", methods=["DELETE"])
+def delete_expense_subfield(subfield_id):
+    auth_error = _check_api_auth()
+    if auth_error:
+        return auth_error
+
+    subfield = db.session.get(ExpenseSubfield, subfield_id)
+    if subfield is None:
+        return jsonify({"error": "not found"}), 404
+
+    db.session.delete(subfield)
+    db.session.commit()
     return jsonify({"ok": True})
 
 

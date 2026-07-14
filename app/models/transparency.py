@@ -1,6 +1,31 @@
 from app.extensions import db
 
 
+class ExpenseSubfield(db.Model):
+    """Ad-hoc extra expense line item an admin can add under a report's
+    Expenses section, beyond the fixed categories."""
+
+    __tablename__ = "expense_subfields"
+
+    id = db.Column(db.Integer, primary_key=True)
+    report_id = db.Column(db.Integer, db.ForeignKey("transparency_reports.id"), nullable=False)
+    label = db.Column(db.String(200), nullable=False)
+    amount_cents = db.Column(db.Integer, nullable=False, default=0)
+    description = db.Column(db.Text, nullable=True)
+    sort_order = db.Column(db.Integer, nullable=False, default=0)
+
+    report = db.relationship("TransparencyReport", backref=db.backref(
+        "expense_subfields", order_by="ExpenseSubfield.sort_order", cascade="all, delete-orphan"
+    ))
+
+    @property
+    def amount(self):
+        return self.amount_cents / 100
+
+    def __repr__(self):
+        return f"<ExpenseSubfield {self.label!r}>"
+
+
 class TransparencyReport(db.Model):
     """One row per reporting period (e.g. 'Q3 2026'). Designed for an annual/quarterly
     reporting cadence - new periods are added over time, never edited in place once
