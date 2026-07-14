@@ -4,10 +4,9 @@
 {% block content %}
 <section class="max-w-4xl mx-auto px-4 sm:px-6 py-16">
   <p class="font-mono text-[11px] tracking-[0.15em] font-medium text-brand-700 mb-3 flex items-center gap-2"><span class="inline-block w-4 h-px bg-brand-600"></span>PUBLIC ACCOUNTABILITY</p>
-  <h1 class="text-3xl font-extrabold text-slate-900">Transparency</h1>
+  <h1 class="text-3xl font-extrabold text-slate-900">{{ editable('transparency.title', 'Transparency') }}</h1>
   <p class="mt-4 text-slate-600 max-w-2xl">
-    Refresh Labs publishes donations, expenses, and mining activity as an
-    annual report. Figures are updated at the close of each reporting period.
+    {{ editable('transparency.blurb', 'Refresh Labs publishes donations, expenses, and mining activity as an annual report. Figures are updated at the close of each reporting period.') }}
   </p>
 
   {% if reports %}

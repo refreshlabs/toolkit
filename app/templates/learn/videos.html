@@ -4,8 +4,8 @@
 {% block content %}
 <section class="max-w-6xl mx-auto px-4 sm:px-6 py-16">
   <p class="font-mono text-[11px] tracking-[0.15em] font-medium text-brand-700 mb-3 flex items-center gap-2"><span class="inline-block w-4 h-px bg-brand-600"></span>LEARN</p>
-  <h1 class="text-3xl font-extrabold text-slate-900">Video Library</h1>
-  <p class="mt-3 text-slate-600 max-w-2xl">Search and filter our growing library of educational videos.</p>
+  <h1 class="text-3xl font-extrabold text-slate-900">{{ editable('learn.videos.title', 'Video Library') }}</h1>
+  <p class="mt-3 text-slate-600 max-w-2xl">{{ editable('learn.videos.blurb', 'Search and filter our growing library of educational videos.') }}</p>
 
   <form method="get" class="mt-8 flex flex-col sm:flex-row gap-3">
     <input

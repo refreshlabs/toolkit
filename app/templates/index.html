@@ -34,12 +34,10 @@
     <p class="font-mono text-[11px] tracking-[0.15em] font-medium text-brand-700 mb-4 flex items-center justify-center gap-2">
       <span class="inline-block w-4 h-px bg-brand-600"></span>501(C)(3) EDUCATIONAL NONPROFIT<span class="inline-block w-4 h-px bg-brand-600"></span>
     </p>
-    <h1 class="text-4xl sm:text-6xl font-bold tracking-tight text-slate-900">Refresh Labs</h1>
-    <p class="mt-5 text-xl text-slate-600">Exploring open systems through education, experimentation, and community.</p>
+    <h1 class="text-4xl sm:text-6xl font-bold tracking-tight text-slate-900">{{ editable('home.hero.title', 'Refresh Labs') }}</h1>
+    <p class="mt-5 text-xl text-slate-600">{{ editable('home.hero.subtitle', 'Exploring open systems through education, experimentation, and community.') }}</p>
     <p class="mt-4 text-base text-slate-500 max-w-2xl mx-auto">
-      We create educational resources and public demonstrations that help people
-      understand Bitcoin, open-source software, communications technology, and
-      decentralized systems.
+      {{ editable('home.hero.description', 'We create educational resources and public demonstrations that help people understand Bitcoin, open-source software, communications technology, and decentralized systems.') }}
     </p>
     <div class="mt-9 flex flex-wrap justify-center gap-3">
       <a href="{{ url_for('learn.index') }}" class="bg-brand-600 hover:bg-brand-700 text-white font-semibold px-6 py-3 rounded-md">Explore Learning Resources</a>
@@ -61,7 +59,7 @@
 
 <section class="max-w-6xl mx-auto px-4 sm:px-6 pt-14 pb-16">
   <p class="font-mono text-[11px] tracking-[0.15em] font-medium text-brand-700 mb-3 flex items-center gap-2"><span class="inline-block w-4 h-px bg-brand-600"></span>MISSION AREAS</p>
-  <h2 class="text-2xl font-bold text-slate-900">Three ways we teach open systems</h2>
+  <h2 class="text-2xl font-bold text-slate-900">{{ editable('home.mission.heading', 'Three ways we teach open systems') }}</h2>
 
   <div class="mt-8 grid gap-5 sm:grid-cols-3">
     <div class="group rounded-lg border border-slate-200 border-t-2 border-t-brand-500 bg-white p-6 hover:shadow-md hover:-translate-y-0.5 transition">
@@ -74,8 +72,8 @@
         </div>
         <span class="font-mono text-xs text-slate-300">01</span>
       </div>
-      <h3 class="mt-4 font-semibold text-slate-900">Bitcoin &amp; Decentralized Systems</h3>
-      <p class="mt-2 text-sm text-slate-500">Teaching Bitcoin mining, proof-of-work, network architecture, and decentralized technology.</p>
+      <h3 class="mt-4 font-semibold text-slate-900">{{ editable('home.mission.card1.title', 'Bitcoin & Decentralized Systems') }}</h3>
+      <p class="mt-2 text-sm text-slate-500">{{ editable('home.mission.card1.blurb', 'Teaching Bitcoin mining, proof-of-work, network architecture, and decentralized technology.') }}</p>
     </div>
 
     <div class="group rounded-lg border border-slate-200 border-t-2 border-t-brand-500 bg-white p-6 hover:shadow-md hover:-translate-y-0.5 transition">
@@ -87,8 +85,8 @@
         </div>
         <span class="font-mono text-xs text-slate-300">02</span>
       </div>
-      <h3 class="mt-4 font-semibold text-slate-900">Open Source Technology</h3>
-      <p class="mt-2 text-sm text-slate-500">Exploring FOSS, Linux, programming, and collaborative software development.</p>
+      <h3 class="mt-4 font-semibold text-slate-900">{{ editable('home.mission.card2.title', 'Open Source Technology') }}</h3>
+      <p class="mt-2 text-sm text-slate-500">{{ editable('home.mission.card2.blurb', 'Exploring FOSS, Linux, programming, and collaborative software development.') }}</p>
     </div>
 
     <div class="group rounded-lg border border-slate-200 border-t-2 border-t-brand-500 bg-white p-6 hover:shadow-md hover:-translate-y-0.5 transition">
@@ -101,8 +99,8 @@
         </div>
         <span class="font-mono text-xs text-slate-300">03</span>
       </div>
-      <h3 class="mt-4 font-semibold text-slate-900">Community Education</h3>
-      <p class="mt-2 text-sm text-slate-500">Hosting free educational, cultural, and family-friendly events.</p>
+      <h3 class="mt-4 font-semibold text-slate-900">{{ editable('home.mission.card3.title', 'Community Education') }}</h3>
+      <p class="mt-2 text-sm text-slate-500">{{ editable('home.mission.card3.blurb', 'Hosting free educational, cultural, and family-friendly events.') }}</p>
     </div>
   </div>
 </section>
@@ -116,11 +114,9 @@
   </svg>
   <div class="relative max-w-6xl mx-auto px-4 sm:px-6 py-16">
     <p class="font-mono text-[11px] tracking-[0.15em] font-medium text-brand-300 mb-3 flex items-center gap-2"><span class="inline-block w-4 h-px bg-brand-300"></span>CURRENT PROJECT</p>
-    <h2 class="text-2xl font-bold">Living Laboratory</h2>
+    <h2 class="text-2xl font-bold">{{ editable('home.lab.heading', 'Living Laboratory') }}</h2>
     <p class="mt-4 text-slate-300 max-w-2xl">
-      Refresh Labs operates a transparent Bitcoin mining laboratory as an
-      educational demonstration. The project documents real-world mining
-      operations, costs, performance, and lessons learned.
+      {{ editable('home.lab.blurb', 'Refresh Labs operates a transparent Bitcoin mining laboratory as an educational demonstration. The project documents real-world mining operations, costs, performance, and lessons learned.') }}
     </p>
 
     <div class="mt-10 grid gap-4 sm:grid-cols-3">

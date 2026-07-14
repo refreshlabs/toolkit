@@ -1,12 +1,25 @@
 from datetime import date
 
 import click
+from flask import current_app
 
 from app.extensions import db
-from app.models import Event, LabStatus, TransparencyReport, Video
+from app.models import LabStatus, TransparencyReport, Video
+from app.services.youtube import YouTubeSyncError, sync_videos
 
 
 def register_cli(app):
+    @app.cli.command("sync-youtube")
+    def sync_youtube():
+        """Fetch videos from the configured YouTube channel and upsert them into the Video table."""
+        api_key = current_app.config["YOUTUBE_API_KEY"]
+        channel_id = current_app.config["YOUTUBE_CHANNEL_ID"]
+        try:
+            created, updated = sync_videos(api_key, channel_id)
+        except YouTubeSyncError as e:
+            raise click.ClickException(str(e))
+        click.echo(f"YouTube sync complete: {created} created, {updated} updated.")
+
     @app.cli.command("seed-db")
     def seed_db():
         """Create tables and populate placeholder content for a fresh install."""
@@ -52,17 +65,6 @@ def register_cli(app):
                         is_placeholder=True,
                     ),
                 ]
-            )
-
-        if not Event.query.first():
-            db.session.add(
-                Event(
-                    title="Coming Soon: First Community Workshop",
-                    description="Details on our first educational workshop will be posted here.",
-                    event_date=date.today(),
-                    location="To Be Announced",
-                    registration_url=None,
-                )
             )
 
         if not TransparencyReport.query.first():

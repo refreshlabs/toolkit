@@ -4,12 +4,10 @@
 {% block content %}
 <section class="max-w-3xl mx-auto px-4 sm:px-6 py-16">
   <p class="font-mono text-[11px] tracking-[0.15em] font-medium text-brand-700 mb-3 flex items-center gap-2"><span class="inline-block w-4 h-px bg-brand-600"></span>SUPPORT OUR WORK</p>
-  <h1 class="text-3xl font-extrabold text-slate-900">Donate</h1>
+  <h1 class="text-3xl font-extrabold text-slate-900">{{ editable('donate.title', 'Donate') }}</h1>
 
   <p class="mt-6 text-lg text-slate-600 leading-relaxed">
-    Contributions support educational programming, technology demonstrations,
-    community events, and the operation of the Refresh Labs Living
-    Laboratory.
+    {{ editable('donate.blurb', 'Contributions support educational programming, technology demonstrations, community events, and the operation of the Refresh Labs Living Laboratory.') }}
   </p>
   <p class="mt-3 text-sm text-slate-400">
     Donations support our educational mission - they are not a purchase of
@@ -19,11 +17,11 @@
   <a href="#" class="inline-block mt-8 bg-brand-600 hover:bg-brand-700 text-white font-semibold px-8 py-3.5 rounded-md">Donate Now</a>
   <p class="mt-2 text-xs text-slate-400">Donation processing is not yet connected. This button is a placeholder.</p>
 
-  <h2 class="mt-14 text-xl font-bold text-slate-900">Where Your Support Goes</h2>
+  <h2 class="mt-14 text-xl font-bold text-slate-900">{{ editable('donate.support_goes.heading', 'Where Your Support Goes') }}</h2>
 
   <div class="mt-6 space-y-8">
     <div class="rounded-2xl border border-slate-200 p-6">
-      <h3 class="font-semibold text-slate-900">Current Infrastructure Needs</h3>
+      <h3 class="font-semibold text-slate-900">{{ editable('donate.infrastructure.title', 'Current Infrastructure Needs') }}</h3>
       <dl class="mt-4 space-y-2 text-sm">
         <div class="flex justify-between border-b border-slate-100 pb-2">
           <dt class="text-slate-500">Website Domains</dt>
@@ -37,8 +35,8 @@
     </div>
 
     <div class="rounded-2xl border border-slate-200 p-6">
-      <h3 class="font-semibold text-slate-900">Community Events</h3>
-      <p class="mt-3 text-sm text-slate-500">Events are primarily supported through:</p>
+      <h3 class="font-semibold text-slate-900">{{ editable('donate.events.title', 'Community Events') }}</h3>
+      <p class="mt-3 text-sm text-slate-500">{{ editable('donate.events.blurb', 'Events are primarily supported through:') }}</p>
       <ul class="mt-2 list-disc list-inside text-sm text-slate-500 space-y-1">
         <li>Volunteer participation</li>
         <li>Donated materials</li>
@@ -48,8 +46,8 @@
     </div>
 
     <div class="rounded-2xl border border-slate-200 p-6">
-      <h3 class="font-semibold text-slate-900">Living Laboratory</h3>
-      <p class="mt-3 text-sm text-slate-500">Remaining resources support:</p>
+      <h3 class="font-semibold text-slate-900">{{ editable('donate.lab.title', 'Living Laboratory') }}</h3>
+      <p class="mt-3 text-sm text-slate-500">{{ editable('donate.lab.blurb', 'Remaining resources support:') }}</p>
       <ul class="mt-2 list-disc list-inside text-sm text-slate-500 space-y-1">
         <li>Rented computational resources</li>
         <li>Monitoring infrastructure</li>

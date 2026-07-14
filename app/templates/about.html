@@ -4,35 +4,24 @@
 {% block content %}
 <section class="max-w-3xl mx-auto px-4 sm:px-6 py-16">
   <p class="font-mono text-[11px] tracking-[0.15em] font-medium text-brand-700 mb-3 flex items-center gap-2"><span class="inline-block w-4 h-px bg-brand-600"></span>ABOUT</p>
-  <h1 class="text-3xl font-extrabold text-slate-900">Our Mission</h1>
+  <h1 class="text-3xl font-extrabold text-slate-900">{{ editable('about.mission.title', 'Our Mission') }}</h1>
 
   <p class="mt-6 text-lg text-slate-600 leading-relaxed">
-    Refresh Labs is a nonprofit educational organization dedicated to
-    advancing public understanding of science, technology, open-source
-    software, and emerging digital systems through educational programs,
-    media, demonstrations, and community initiatives.
+    {{ editable('about.mission.blurb', 'Refresh Labs is a nonprofit educational organization dedicated to advancing public understanding of science, technology, open-source software, and emerging digital systems through educational programs, media, demonstrations, and community initiatives.') }}
   </p>
 
-  <h2 class="mt-12 text-xl font-bold text-slate-900">Educational Purpose</h2>
+  <h2 class="mt-12 text-xl font-bold text-slate-900">{{ editable('about.purpose.title', 'Educational Purpose') }}</h2>
   <p class="mt-3 text-slate-600 leading-relaxed">
-    Refresh Labs exists to educate the public about open systems, including
-    Bitcoin, proof-of-work, open-source software, digital literacy,
-    communications technology, and related technologies through educational
-    media, hands-on demonstrations, transparent experimentation, and
-    community programs. The organization operates a "Living Laboratory"
-    where Bitcoin mining is used as an educational demonstration - mining is
-    not operated as a commercial profit-seeking activity. The purpose is to
-    teach how decentralized networks, proof-of-work, mining economics, and
-    open technologies function through real-world experimentation.
+    {{ editable('about.purpose.blurb', 'Refresh Labs exists to educate the public about open systems, including Bitcoin, proof-of-work, open-source software, digital literacy, communications technology, and related technologies through educational media, hands-on demonstrations, transparent experimentation, and community programs. The organization operates a "Living Laboratory" where Bitcoin mining is used as an educational demonstration - mining is not operated as a commercial profit-seeking activity. The purpose is to teach how decentralized networks, proof-of-work, mining economics, and open technologies function through real-world experimentation.') }}
   </p>
 
-  <h2 class="mt-12 text-xl font-bold text-slate-900">Nonprofit Status</h2>
+  <h2 class="mt-12 text-xl font-bold text-slate-900">{{ editable('about.nonprofit.title', 'Nonprofit Status') }}</h2>
   <p class="mt-3 text-slate-600 leading-relaxed">
     Refresh Labs is organized as a 501(c)(3) nonprofit organization.
     <span class="text-slate-400">(Formal determination status and EIN will be published here once finalized.)</span>
   </p>
 
-  <h2 class="mt-12 text-xl font-bold text-slate-900">Our Commitment to Transparency</h2>
+  <h2 class="mt-12 text-xl font-bold text-slate-900">{{ editable('about.transparency.title', 'Our Commitment to Transparency') }}</h2>
   <p class="mt-3 text-slate-600 leading-relaxed">
     Education first. Transparency always. We publish our code, our
     operational data, and our finances openly - including costs and losses

@@ -2,7 +2,10 @@ from datetime import date
 
 from app.extensions import db
 
-CATEGORIES = ["Bitcoin", "Mining", "Open Source", "HAM Radio", "Networking", "Digital Literacy"]
+CATEGORIES = [
+    "Bitcoin", "Mining", "Open Source", "HAM Radio", "Networking",
+    "Digital Literacy", "Uncategorized",
+]
 
 
 class Video(db.Model):
@@ -16,6 +19,7 @@ class Video(db.Model):
     external_url = db.Column(db.String(500), nullable=True)
     thumbnail_url = db.Column(db.String(500), nullable=True)
     is_placeholder = db.Column(db.Boolean, nullable=False, default=True)
+    youtube_video_id = db.Column(db.String(20), unique=True, nullable=True)
 
     def __repr__(self):
         return f"<Video {self.title!r}>"

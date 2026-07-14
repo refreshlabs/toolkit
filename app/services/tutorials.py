@@ -1,10 +1,14 @@
 import os
+import re
 from dataclasses import dataclass, field
 from datetime import date
 
 import frontmatter
 import markdown
+import yaml
 from flask import current_app
+
+from app.models.video import CATEGORIES
 
 
 @dataclass
@@ -68,4 +72,35 @@ def get_tutorial(slug):
 
 
 def all_categories():
-    return sorted({t.category for t in _load_all()})
+    return CATEGORIES
+
+
+def slugify(title):
+    slug = title.strip().lower()
+    slug = re.sub(r"[^a-z0-9]+", "-", slug)
+    return slug.strip("-")
+
+
+def slug_exists(slug):
+    path = os.path.join(_tutorials_dir(), f"{slug}.md")
+    return os.path.exists(path)
+
+
+def save_tutorial(slug, title, description, category, date_published, body):
+    directory = _tutorials_dir()
+    os.makedirs(directory, exist_ok=True)
+
+    metadata = {
+        "title": title,
+        "description": description,
+        "category": category,
+        "date": date_published,
+    }
+    front_matter = yaml.safe_dump(
+        metadata, sort_keys=False, default_flow_style=False, allow_unicode=True
+    )
+    content = f"---\n{front_matter}---\n\n{body.strip()}\n"
+
+    path = os.path.join(directory, f"{slug}.md")
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(content)

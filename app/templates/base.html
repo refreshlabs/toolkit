@@ -67,7 +67,6 @@
           </div>
         </div>
         <a href="{{ url_for('laboratory.index') }}" class="hover:text-brand-600">Living Laboratory</a>
-        <a href="{{ url_for('events.index') }}" class="hover:text-brand-600">Events</a>
         <a href="{{ url_for('main.transparency') }}" class="hover:text-brand-600">Transparency</a>
         <a href="{{ url_for('main.github') }}" class="hover:text-brand-600">GitHub</a>
         <a href="{{ url_for('main.donate') }}" class="bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 rounded-md font-semibold">Donate</a>
@@ -80,7 +79,6 @@
       <a href="{{ url_for('learn.videos') }}" class="py-2">Learn — Videos</a>
       <a href="{{ url_for('learn.tutorials') }}" class="py-2">Learn — Tutorials</a>
       <a href="{{ url_for('laboratory.index') }}" class="py-2">Living Laboratory</a>
-      <a href="{{ url_for('events.index') }}" class="py-2">Events</a>
       <a href="{{ url_for('main.transparency') }}" class="py-2">Transparency</a>
       <a href="{{ url_for('main.github') }}" class="py-2">GitHub</a>
       <a href="{{ url_for('main.donate') }}" class="py-2 font-semibold text-brand-700">Donate</a>
@@ -110,7 +108,6 @@
         <p class="font-semibold text-slate-900 mb-2">Organization</p>
         <ul class="space-y-1.5 text-slate-500">
           <li><a href="{{ url_for('main.about') }}" class="hover:text-brand-600">About</a></li>
-          <li><a href="{{ url_for('events.index') }}" class="hover:text-brand-600">Events</a></li>
           <li><a href="{{ url_for('main.transparency') }}" class="hover:text-brand-600">Transparency</a></li>
           <li><a href="{{ url_for('main.github') }}" class="hover:text-brand-600">GitHub</a></li>
         </ul>
@@ -124,6 +121,9 @@
     </div>
     <div class="border-t border-slate-200 py-5 text-center text-xs text-slate-400">
       Refresh Labs is a nonprofit educational organization. Content and code are published openly.
+      {% if not is_admin %}
+        · <a href="{{ url_for('admin.login') }}" class="hover:text-brand-600">Admin</a>
+      {% endif %}
     </div>
   </footer>
 
@@ -135,6 +135,45 @@
       menu.classList.toggle('hidden');
     });
   </script>
+
+  {% if is_admin %}
+    <style>
+      [data-editable-key] { outline: 1px dashed #279d92; outline-offset: 2px; cursor: text; }
+      [data-editable-key]:focus { outline: 2px solid #1c7d76; background: #f0fbfa; }
+    </style>
+    <div class="fixed bottom-0 inset-x-0 z-50 bg-slate-900 text-white text-xs px-4 py-2 flex items-center justify-between gap-4">
+      <span>Admin editing enabled — click any dashed text to edit, click outside it to save.</span>
+      <form method="post" action="{{ url_for('admin.logout') }}">
+        <button type="submit" class="underline hover:text-brand-300">Log out</button>
+      </form>
+    </div>
+    <script>
+      (function () {
+        var csrfToken = {{ csrf_token|tojson }};
+        document.querySelectorAll('[data-editable-key]').forEach(function (el) {
+          el.setAttribute('contenteditable', 'true');
+          el.addEventListener('blur', function () {
+            var key = el.getAttribute('data-editable-key');
+            var value = el.textContent;
+            fetch('{{ url_for("admin.update_content") }}', {
+              method: 'PATCH',
+              headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': csrfToken },
+              body: JSON.stringify({ key: key, value: value }),
+            }).then(function (res) {
+              el.style.outline = res.ok ? '2px solid #22c55e' : '2px solid #ef4444';
+              setTimeout(function () { el.style.outline = ''; }, 800);
+            });
+          });
+          el.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              el.blur();
+            }
+          });
+        });
+      })();
+    </script>
+  {% endif %}
   {% block scripts %}{% endblock %}
 </body>
 </html>
