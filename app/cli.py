@@ -74,7 +74,7 @@ def register_cli(app):
                     donations_total_cents=0,
                     expense_website_cents=0,
                     expense_content_cents=0,
-                    expense_events_cents=0,
+                    expense_irs_cents=0,
                     expense_lab_cents=0,
                     btc_purchased=0,
                     btc_mined=0,

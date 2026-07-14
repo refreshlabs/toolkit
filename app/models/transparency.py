@@ -14,7 +14,7 @@ class TransparencyReport(db.Model):
     donations_total_cents = db.Column(db.Integer, nullable=False, default=0)
     expense_website_cents = db.Column(db.Integer, nullable=False, default=0)
     expense_content_cents = db.Column(db.Integer, nullable=False, default=0)
-    expense_events_cents = db.Column(db.Integer, nullable=False, default=0)
+    expense_irs_cents = db.Column(db.Integer, nullable=False, default=0)
     expense_lab_cents = db.Column(db.Integer, nullable=False, default=0)
 
     btc_purchased = db.Column(db.Float, nullable=False, default=0)
@@ -36,8 +36,8 @@ class TransparencyReport(db.Model):
         return self.expense_content_cents / 100
 
     @property
-    def expense_events(self):
-        return self.expense_events_cents / 100
+    def expense_irs(self):
+        return self.expense_irs_cents / 100
 
     @property
     def expense_lab(self):
